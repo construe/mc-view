@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{B1787EC5-4A20-4031-9099-6D3E3C212172}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>LevelDb</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(SolutionDir)..\;$(SolutionDir)..\zlib;$(SolutionDir)..\leveldb-mcpe\include;$(SolutionDir)..\leveldb-mcpe;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)..\zlib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(SolutionDir)..\;$(SolutionDir)..\zlib;$(SolutionDir)..\leveldb-mcpe\include;$(SolutionDir)..\leveldb-mcpe;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(SolutionDir)..\;$(SolutionDir)..\zlib;$(SolutionDir)..\leveldb-mcpe\include;$(SolutionDir)..\leveldb-mcpe;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)..\zlib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(SolutionDir)..\;$(SolutionDir)..\zlib;$(SolutionDir)..\leveldb-mcpe\include;$(SolutionDir)..\leveldb-mcpe;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;LEVELDB_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);LEVELDB_EXPORTS;DLLX=__declspec(dllexport);_CRT_SECURE_NO_WARNINGS;NOMINMAX</PreprocessorDefinitions>
+      <ForcedIncludeFiles>stdafx.h</ForcedIncludeFiles>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>zlib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;LEVELDB_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);LEVELDB_EXPORTS;DLLX=__declspec(dllexport);_CRT_SECURE_NO_WARNINGS;NOMINMAX</PreprocessorDefinitions>
+      <ForcedIncludeFiles>stdafx.h</ForcedIncludeFiles>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;LEVELDB_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);LEVELDB_EXPORTS;DLLX=__declspec(dllexport);_CRT_SECURE_NO_WARNINGS;NOMINMAX</PreprocessorDefinitions>
+      <ForcedIncludeFiles>stdafx.h</ForcedIncludeFiles>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>zlib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;LEVELDB_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);LEVELDB_EXPORTS;DLLX=__declspec(dllexport);_CRT_SECURE_NO_WARNINGS;NOMINMAX</PreprocessorDefinitions>
+      <ForcedIncludeFiles>stdafx.h</ForcedIncludeFiles>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\leveldb-mcpe\db\builder.h" />
+    <ClInclude Include="..\..\leveldb-mcpe\db\dbformat.h" />
+    <ClInclude Include="..\..\leveldb-mcpe\db\db_impl.h" />
+    <ClInclude Include="..\..\leveldb-mcpe\db\db_iter.h" />
+    <ClInclude Include="..\..\leveldb-mcpe\db\filename.h" />
+    <ClInclude Include="..\..\leveldb-mcpe\db\log_format.h" />
+    <ClInclude Include="..\..\leveldb-mcpe\db\log_reader.h" />
+    <ClInclude Include="..\..\leveldb-mcpe\db\log_writer.h" />
+    <ClInclude Include="..\..\leveldb-mcpe\db\memtable.h" />
+    <ClInclude Include="..\..\leveldb-mcpe\db\table_cache.h" />
+    <ClInclude Include="..\..\leveldb-mcpe\db\version_edit.h" />
+    <ClInclude Include="..\..\leveldb-mcpe\db\version_set.h" />
+    <ClInclude Include="..\..\leveldb-mcpe\db\write_batch_internal.h" />
+    <ClInclude Include="..\..\leveldb-mcpe\port\port_win.h" />
+    <ClInclude Include="..\..\leveldb-mcpe\table\block.h" />
+    <ClInclude Include="..\..\leveldb-mcpe\table\block_builder.h" />
+    <ClInclude Include="..\..\leveldb-mcpe\table\filter_block.h" />
+    <ClInclude Include="..\..\leveldb-mcpe\table\format.h" />
+    <ClInclude Include="..\..\leveldb-mcpe\table\iterator_wrapper.h" />
+    <ClInclude Include="..\..\leveldb-mcpe\table\merger.h" />
+    <ClInclude Include="..\..\leveldb-mcpe\table\two_level_iterator.h" />
+    <ClInclude Include="..\..\leveldb-mcpe\util\arena.h" />
+    <ClInclude Include="..\..\leveldb-mcpe\util\coding.h" />
+    <ClInclude Include="..\..\leveldb-mcpe\util\crc32c.h" />
+    <ClInclude Include="..\..\leveldb-mcpe\util\hash.h" />
+    <ClInclude Include="..\..\leveldb-mcpe\util\histogram.h" />
+    <ClInclude Include="..\..\leveldb-mcpe\util\logging.h" />
+    <ClInclude Include="..\..\leveldb-mcpe\util\win_logger.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\leveldb-mcpe\db\builder.cc" />
+    <ClCompile Include="..\..\leveldb-mcpe\db\dbformat.cc" />
+    <ClCompile Include="..\..\leveldb-mcpe\db\db_impl.cc" />
+    <ClCompile Include="..\..\leveldb-mcpe\db\db_iter.cc" />
+    <ClCompile Include="..\..\leveldb-mcpe\db\dumpfile.cc" />
+    <ClCompile Include="..\..\leveldb-mcpe\db\filename.cc" />
+    <ClCompile Include="..\..\leveldb-mcpe\db\log_reader.cc" />
+    <ClCompile Include="..\..\leveldb-mcpe\db\log_writer.cc" />
+    <ClCompile Include="..\..\leveldb-mcpe\db\memtable.cc" />
+    <ClCompile Include="..\..\leveldb-mcpe\db\repair.cc" />
+    <ClCompile Include="..\..\leveldb-mcpe\db\snappy_compressor.cc" />
+    <ClCompile Include="..\..\leveldb-mcpe\db\table_cache.cc" />
+    <ClCompile Include="..\..\leveldb-mcpe\db\version_edit.cc" />
+    <ClCompile Include="..\..\leveldb-mcpe\db\version_set.cc" />
+    <ClCompile Include="..\..\leveldb-mcpe\db\write_batch.cc" />
+    <ClCompile Include="..\..\leveldb-mcpe\db\zlib_compressor.cc" />
+    <ClCompile Include="..\..\leveldb-mcpe\db\zopfli_compressor.cc" />
+    <ClCompile Include="..\..\leveldb-mcpe\db\zstd_compressor.cc" />
+    <ClCompile Include="..\..\leveldb-mcpe\port\port_win.cc" />
+    <ClCompile Include="..\..\leveldb-mcpe\table\block.cc" />
+    <ClCompile Include="..\..\leveldb-mcpe\table\block_builder.cc" />
+    <ClCompile Include="..\..\leveldb-mcpe\table\filter_block.cc" />
+    <ClCompile Include="..\..\leveldb-mcpe\table\format.cc" />
+    <ClCompile Include="..\..\leveldb-mcpe\table\iterator.cc" />
+    <ClCompile Include="..\..\leveldb-mcpe\table\merger.cc" />
+    <ClCompile Include="..\..\leveldb-mcpe\table\table.cc" />
+    <ClCompile Include="..\..\leveldb-mcpe\table\table_builder.cc" />
+    <ClCompile Include="..\..\leveldb-mcpe\table\two_level_iterator.cc" />
+    <ClCompile Include="..\..\leveldb-mcpe\util\arena.cc" />
+    <ClCompile Include="..\..\leveldb-mcpe\util\bloom.cc" />
+    <ClCompile Include="..\..\leveldb-mcpe\util\cache.cc" />
+    <ClCompile Include="..\..\leveldb-mcpe\util\coding.cc" />
+    <ClCompile Include="..\..\leveldb-mcpe\util\comparator.cc" />
+    <ClCompile Include="..\..\leveldb-mcpe\util\crc32c.cc" />
+    <ClCompile Include="..\..\leveldb-mcpe\util\env.cc" />
+    <ClCompile Include="..\..\leveldb-mcpe\util\env_win.cc" />
+    <ClCompile Include="..\..\leveldb-mcpe\util\filter_policy.cc" />
+    <ClCompile Include="..\..\leveldb-mcpe\util\hash.cc" />
+    <ClCompile Include="..\..\leveldb-mcpe\util\histogram.cc" />
+    <ClCompile Include="..\..\leveldb-mcpe\util\logging.cc" />
+    <ClCompile Include="..\..\leveldb-mcpe\util\options.cc" />
+    <ClCompile Include="..\..\leveldb-mcpe\util\status.cc" />
+    <ClCompile Include="..\..\leveldb-mcpe\util\win_logger.cc" />
+    <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="LevelDb.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
