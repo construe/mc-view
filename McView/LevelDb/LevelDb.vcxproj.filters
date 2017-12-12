@@ -257,5 +257,8 @@
     <ClCompile Include="..\..\leveldb-mcpe\util\filter_policy.cc">
       <Filter>Source Files\util</Filter>
     </ClCompile>
+    <ClCompile Include="interface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

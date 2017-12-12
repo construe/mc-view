@@ -231,6 +231,7 @@
     <ClCompile Include="..\..\leveldb-mcpe\util\status.cc" />
     <ClCompile Include="..\..\leveldb-mcpe\util\win_logger.cc" />
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="interface.cpp" />
     <ClCompile Include="LevelDb.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
