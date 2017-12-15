@@ -16,6 +16,8 @@ namespace LevelDbBinding
 
         private KeyValueData _current;
 
+        private readonly DisposeList _resources = new DisposeList();
+
         public Iterator(SafeHandle iteratorHandle)
         {
             _iteratorHandle = iteratorHandle;
@@ -61,17 +63,22 @@ namespace LevelDbBinding
                 throw new InvalidOperationException("Invalid iterator state");
 
             var data = DllInterface.IteratorGetData(_iteratorHandle.DangerousGetHandle());
+
+            var key = new UnmanagedByteArray(data.keyData, checked((int) data.keySize));
+            _resources.Add(key);
+            var value = new UnmanagedByteArray(data.valueData, checked((int) data.valueSize));
+            _resources.Add(value);
+
             return new KeyValueData
             {
-                Key = Enumerable.Range(0, checked((int) data.keySize))
-                    .Select(i => Marshal.ReadByte(data.keyData, i)).ToList(),
-                Value = Enumerable.Range(0, checked((int) data.valueSize))
-                    .Select(i => Marshal.ReadByte(data.valueData, i)).ToList()
+                Key = key,
+                Value = value
             };
         }
 
         public void Dispose()
         {
+            _resources.Dispose();
             _iteratorHandle.Dispose();
         }
     }

@@ -14,6 +14,8 @@ namespace LevelDbBinding
         public Database(string name)
         {
             _databaseHandle = new PointerHandle(DllInterface.OpenDatabase(name), DllInterface.CloseDatabase);
+            if(_databaseHandle.IsInvalid)
+                throw new InvalidOperationException("Could not open database");
         }
 
         public void Dispose()
