@@ -97,9 +97,9 @@ vector<point> load_points()
 				auto start_coords = get_block_coords(key);
 				for (int y = 0; y < 16; ++y)
 				{
-					for (int x = 0; x < 16; ++x)
+					for (int z = 0; z < 16; ++z)
 					{
-						for (int z = 0; z < 16; ++z)
+						for (int x = 0; x < 16; ++x)
 						{
 							const auto block_value = value_array[x + z * 16 + y * 256 + 1];
 							++frequency[static_cast<unsigned char>(block_value)];
@@ -108,28 +108,23 @@ vector<point> load_points()
 								|| block_value == 8
 								|| block_value == 10
 								|| block_value == 58
-								|| block_value == 49;
-								//|| block_value == 56;
+								|| block_value == 40
+								|| block_value == 56;
+
+							bool skip = !keep;
 
 							if (keep)
 							{
-								bool skip = false;
-
 								if (x >= 1 && x < 15 && y >= 1 && y < 15 && z >= 1 && z < 15)
 								{
-									auto v1 = value_array[x + 1 + z * 16 + y * 256 + 1];
-									auto v2 = value_array[x - 1 + z * 16 + y * 256 + 1];
-									auto v3 = value_array[x + (z + 1) * 16 + y * 256 + 1];
-									auto v4 = value_array[x + (z - 1) * 16 + y * 256 + 1];
-									auto v5 = value_array[x + z * 16 + (y + 1) * 256 + 1];
-									auto v6 = value_array[x + z * 16 + (y - 1) * 256 + 1];
-									auto e1 = block_value == v1;
-									auto e2 = block_value == v2;
-									auto e3 = block_value == v3;
-									auto e4 = block_value == v4;
-									auto e5 = block_value == v5;
-									auto e6 = block_value == v6;
-									skip = e1 + e2 + e3 + e4 + e5 + e6 == 6;
+									int matches = 0;
+									for (int x1 = x - 1; x1 <= x + 1; ++x1)
+										for (int z1 = z - 1; z1 <= z + 1; ++z1)
+											for (int y1 = y - 1; y1 <= y + 1; ++y1)
+												if (!(x == x1 && y == y1 && z == z1)
+													&& value_array[x1 + z1 * 16 + y1 * 256 + 1] == block_value)
+													++matches;
+									skip = matches == 26;
 								}
 								else
 								{
@@ -138,14 +133,13 @@ vector<point> load_points()
 
 								if (!skip)
 								{
-									float xc = (start_coords.x + y) * 0.3f;
-									float yc = (start_coords.z + z) * 0.3f;
-									float zc = (start_coords.y + x) * 0.3f;
+									float xc = (start_coords.x + y) *0.3f;
+									float yc = (start_coords.z + z) *0.3f;
+									float zc = (start_coords.y + x) *0.3f;
 									float r = block_value == 0 ? 1.f : (block_value & 0x7) / 8.f;
 									float g = block_value == 0 ? 1.f : (block_value & 0x1C >> 3) / 8.f;
 									float b = block_value == 0 ? 1.f : (block_value & 0xC0 >> 3) / 4.f;
-									float size = block_value == 0 ? 1.f : 5.f;
-									result.push_back({ { r, g, b }, { -yc, zc, xc }, size, block_value });
+									result.push_back({ { r, g, b }, { -yc, zc, xc }, block_value });
 								}
 							}
 						}
