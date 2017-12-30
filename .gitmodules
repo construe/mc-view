@@ -4,9 +4,6 @@
 [submodule "zlib"]
 	path = zlib
 	url = https://github.com/madler/zlib.git
-[submodule "sdlpp"]
-	path = sdlpp
-	url = https://github.com/antonte/sdlpp.git
 [submodule "glm"]
 	path = glm
 	url = https://github.com/g-truc/glm.git
