@@ -104,42 +104,38 @@ vector<point> load_points()
 							const auto block_value = value_array[x + z * 16 + y * 256 + 1];
 							++frequency[static_cast<unsigned char>(block_value)];
 
-							bool keep = block_value == 0
-								|| block_value == 8
-								|| block_value == 10
-								|| block_value == 58
-								|| block_value == 40
+							bool keep = block_value == 8
+								|| block_value == 0
+								|| block_value == 0
+								|| block_value == 0
+								|| block_value == 0
 								|| block_value == 56;
-
-							bool skip = !keep;
 
 							if (keep)
 							{
 								if (x >= 1 && x < 15 && y >= 1 && y < 15 && z >= 1 && z < 15)
 								{
 									int matches = 0;
-									for (int x1 = x - 1; x1 <= x + 1; ++x1)
+									for (int y1 = y - 1; y1 <= y + 1; ++y1)
 										for (int z1 = z - 1; z1 <= z + 1; ++z1)
-											for (int y1 = y - 1; y1 <= y + 1; ++y1)
-												if (!(x == x1 && y == y1 && z == z1)
-													&& value_array[x1 + z1 * 16 + y1 * 256 + 1] == block_value)
-													++matches;
-									skip = matches == 26;
+											for (int x1 = x - 1; x1 <= x + 1; ++x1)
+												matches += value_array[x1 + z1 * 16 + y1 * 256 + 1] == block_value;
+									keep = matches < 27;
 								}
 								else
 								{
-									skip = block_value == 0;
+									keep = block_value != 0 && block_value != 1;
 								}
 
-								if (!skip)
+								if (keep)
 								{
-									float xc = (start_coords.x + y) *0.3f;
-									float yc = (start_coords.z + z) *0.3f;
-									float zc = (start_coords.y + x) *0.3f;
-									float r = block_value == 0 ? 1.f : (block_value & 0x7) / 8.f;
-									float g = block_value == 0 ? 1.f : (block_value & 0x1C >> 3) / 8.f;
-									float b = block_value == 0 ? 1.f : (block_value & 0xC0 >> 3) / 4.f;
-									result.push_back({ { r, g, b }, { -yc, zc, xc }, block_value });
+									float xc = start_coords.x + y;
+									float yc = start_coords.z + z;
+									float zc = start_coords.y + x;
+										float r = block_value == 0 ? 1.f : (block_value & 0x7) / 8.f;
+										float g = block_value == 0 ? 1.f : (block_value & 0x1C >> 3) / 8.f;
+										float b = block_value == 0 ? 1.f : (block_value & 0xC0 >> 3) / 4.f;
+										result.push_back({ { r, g, b }, { -yc, zc, xc }, block_value });
 								}
 							}
 						}
